@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="ShowTime()">
+    <h2 class="x"></h2>
+</body>
+<script type="text/javascript">
+    function ShowTime() {
+        var d = new Date();
+        var h = d.getHours();
+        var m = d.getMinutes();
+        var s = d.getSeconds();
+        var period = "AM";
+        if (h > 12) {
+            h = h - 12;
+        }
+        if (h >= 12) {
+            period = "PM";
+        }
+        h = h < 10 ? "0" + h : h;
+        m = m < 10 ? "0" + m : m;
+        s = s < 10 ? "0" + s : s;
+
+        var time = h + ":" + m + ":" + s + " " + period;
+        document.getElementsByTagName("h2")[0].innerText = time;
+        setTimeout(ShowTime, 1000);
+    }
+</script>
+
+</html>
